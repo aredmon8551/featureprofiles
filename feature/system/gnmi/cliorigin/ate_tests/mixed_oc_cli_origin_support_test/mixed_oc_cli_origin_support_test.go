@@ -38,8 +38,11 @@ interface %s
   description %s
 `
 		return fmt.Sprintf(tmpl, dp.Name(), desc)
+        case ondatra.JUNIPER:
+                const tmpl = `set interface %s description %s`
+                return fmt.Sprintf(tmpl, dp.Name(), desc)
 	}
-	return ""
+        return ""
 }
 
 func buildOCUpdate(path *gpb.Path, value string) *gpb.Update {
